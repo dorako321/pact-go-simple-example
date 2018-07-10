@@ -10,7 +10,6 @@ import (
 
 	"github.com/pact-foundation/pact-go/dsl"
 	"github.com/pact-foundation/pact-go/types"
-	//"github.com/dorako321/pact-go-simple-example/pact-provider/main.go"
 )
 
 var dir, _ = os.Getwd()
@@ -24,7 +23,7 @@ func TestProvider(t *testing.T) {
 		Provider: "MyProvider",
 	}
 	// サーバの起動
-	go main()
+	go startServer()
 
 	// ローカルpactファイルを用いた検証
 	pactsDir := filepath.ToSlash(fmt.Sprintf("%s/myconsumer-myprovider.json", pactDir))
@@ -35,6 +34,7 @@ func TestProvider(t *testing.T) {
 	})
 }
 
+// プロダクトコード（になる予定）
 func startServer() {
 	mux := http.NewServeMux()
 
